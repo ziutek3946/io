@@ -9,4 +9,8 @@ public class Polaczenie {
 		this.punkt_zrodlowy = punkt_zrodlowy;
 		this.punkt_docelowy = punkt_docelowy;
 	}
+
+	public String as_string(){
+		return "Polaczenie z " + punkt_zrodlowy + " do " + punkt_docelowy;
+	}
 }

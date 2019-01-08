@@ -5,5 +5,5 @@
  * @author uml
  *
  */
-module Linielotnicze {
+class Linielotnicze {
 }

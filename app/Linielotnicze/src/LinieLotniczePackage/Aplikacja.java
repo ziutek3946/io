@@ -1,6 +1,8 @@
 package LinieLotniczePackage;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Aplikacja {
 	private static ZarzadcaLotow zarzadca_lotow;
@@ -12,7 +14,9 @@ public class Aplikacja {
 		
 		Pilot pilot1 = new Pilot("Jan", "Kowalski", "0001");
 		Pilot pilot2 = new Pilot("Niejan", "Niekowalski", "0002");
-		Pilot[] piloci = {pilot1, pilot2};
+		List<Pilot> piloci = new ArrayList<Pilot>();
+		piloci.add(pilot1);
+		piloci.add(pilot2);
 
 		Samolot samolot1 = new Samolot(100);
 		
@@ -23,10 +27,14 @@ public class Aplikacja {
 		Grafik grafik1 = new Grafik(wylot, przylot);
 		
 		zarzadca_lotow.dodaj_lot(piloci, samolot1, polaczenie1, grafik1);
-		Lot lot = zarzadca_lotow.get_lot(polaczenie1);
-		zarzadca_lotow.zaktualizuj_cene(lot, 999);
-		int cena = zarzadca_lotow.sprawdz_cene(lot);
-		System.out.print(cena);
+		try {
+			Lot lot = zarzadca_lotow.get_lot(polaczenie1);
+			zarzadca_lotow.zaktualizuj_cene(lot, 999);
+			int cena = zarzadca_lotow.sprawdz_cene(lot);
+			System.out.print(cena);
+		} catch (LotNotFound e) {
+			System.out.print("No niestety");
+		}
 	}
 
 }
