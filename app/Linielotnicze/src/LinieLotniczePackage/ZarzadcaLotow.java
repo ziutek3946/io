@@ -3,24 +3,16 @@ package LinieLotniczePackage;
 import java.util.ArrayList;
 import java.util.List;
 
-
-class LotNotFound extends Exception {
-	public LotNotFound(String message) {
-		super(message);
-	}
-}
-
-
 public class ZarzadcaLotow {
 	
-	protected List<Lot> loty;
+	private List<Lot> loty;
 	
 	public ZarzadcaLotow()
 	{
 		this.loty = new ArrayList<Lot>();
 	}
 	
-	public void dodaj_lot(List<Pilot> piloci, Samolot samolot, Polaczenie polaczenie, Grafik grafik)
+	public void dodaj_lot(Pilot[] piloci, Samolot samolot, Polaczenie polaczenie, Grafik grafik)
 	{
 		Lot lot = new Lot(piloci, samolot, polaczenie, grafik);
 		loty.add(lot);
@@ -36,12 +28,12 @@ public class ZarzadcaLotow {
 		return lot.sprawdz_cene();
 	}
 	
-	public Lot get_lot(Polaczenie polaczenie) throws LotNotFound {
+	public Lot get_lot(Polaczenie polaczenie) {
 		for (Lot lot : this.loty) {
 			if (lot.get_polaczenie() == polaczenie) {
 				return lot;
 			}
 		}
-		throw new LotNotFound(polaczenie + " nie ma lotu");
+		return null;
 	}
 }

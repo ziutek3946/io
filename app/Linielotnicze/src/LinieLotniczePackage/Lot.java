@@ -1,19 +1,17 @@
 package LinieLotniczePackage;
 
-import java.util.List;
-
 public class Lot {
 	private Kolejka kolejka;
-	private List<Pilot> piloci;
+	private Pilot[] piloci;
 	private Samolot samolot;
 	private Bilet[] bilety;
 	private Grafik grafik;
 	private Polaczenie polaczenie;
 	private int cena;
 	
-	public Lot(List<Pilot> piloci, Samolot samolot, Polaczenie polaczenie, Grafik grafik)
+	public Lot(Pilot[] piloci, Samolot samolot, Polaczenie polaczenie, Grafik grafik)
 	{
-		this.piloci = piloci;
+		this.piloci = piloci.clone();
 		this.samolot = samolot;
 		this.polaczenie = polaczenie;
 		this.grafik = grafik;
@@ -31,9 +29,5 @@ public class Lot {
 	
 	public Polaczenie get_polaczenie() {
 		return this.polaczenie;
-	}
-
-	public boolean equals(Lot lot) {
-		return (this.polaczenie == lot.get_polaczenie());
 	}
 }
